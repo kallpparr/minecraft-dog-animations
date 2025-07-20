@@ -1,0 +1,29 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+package doggytalents.common.entity.ai.triggerable;
+
+import doggytalents.api.anim.DogAnimation;
+import doggytalents.common.entity.Dog;
+import doggytalents.common.entity.ai.triggerable.TriggerableAction.ActionState;
+
+public class DogBackFlipAction extends AnimationAction {
+    private int tickTillJump = 3;
+
+    public DogBackFlipAction(Dog dog) {
+        super(dog, DogAnimation.BACKFLIP);
+    }
+
+    public void tick() {
+        super.tick();
+        if (this.getState() != ActionState.FINISHED) {
+            if (--this.tickTillJump == 0) {
+                this.dog.getJumpControl().setActive();
+            }
+
+        }
+    }
+}
+
